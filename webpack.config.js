@@ -2,9 +2,11 @@ var path = require("path");
 var webpack = require("webpack");
 
 module.exports = {
-    context: __dirname + "/app",
+    context: path.resolve(__dirname, "app"),
     devtool: 'eval',
-    entry: { app: ["./js/index.js"] },
+    entry: {
+        app: ["./js/index.js"]
+    },
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "js/",
