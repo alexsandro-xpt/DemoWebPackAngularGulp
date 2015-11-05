@@ -27,6 +27,7 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
 	  enabled: true,
 	  requireBase: false
 	});
+
 }]); 
 
 app.controller('ctrApp', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {

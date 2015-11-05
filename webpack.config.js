@@ -1,6 +1,7 @@
 var path = require("path");
 var webpack = require("webpack");
-//var BowerWebpackPlugin = require("bower-webpack-plugin");
+var WebpackNotifierPlugin = require('webpack-notifier');
+
 
 module.exports = {
     context: path.resolve(__dirname, "app"),
@@ -24,7 +25,7 @@ module.exports = {
     ],*/
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin(),
-        //new BowerWebpackPlugin()
+        new WebpackNotifierPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
         )
