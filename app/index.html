@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" ng-app="app">
 <head>
   <meta charset="utf-8">
   <title>The Brand New Web Site</title>
@@ -7,12 +7,23 @@
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
-<body>
-  <h1>Teste {aaa} 2121</h1>
+<body ng-controller="ctrApp">
+  
+  <div ng-view></div>
+
  
  
-	<!-- run javascript at the end   <script src="http://localhost:8080/webpack-dev-server.js"></script> -->
-  <script src="/js/bundle.js"></script>
+
 
 </body>
+
+<!-- run javascript at the end> -->
+<script src="/js/bundle.js"></script>
+
+<script type="text/ng-template" id="/template/main.html">
+  <h1>Teste {{aaa}} 2121</h1>
+  <p>teste</p>
+</script>
+
+
 </html>

@@ -13,5 +13,6 @@
     "gulp-util": "^3.0.7",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
-  }
+  },
+  "dependencies": {}
 }

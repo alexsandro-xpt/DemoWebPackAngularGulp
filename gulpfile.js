@@ -6,7 +6,7 @@ var webpackConfig = require("./webpack.config.js");
 
 
 var myDevConfig = Object.create(webpackConfig);
-//myDevConfig.devtool = "sourcemap";
+myDevConfig.devtool = "sourcemap";
 myDevConfig.debug = true;
 myDevConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080");
 //myDevConfig.entry.app.unshift('webpack/hot/only-dev-server');
