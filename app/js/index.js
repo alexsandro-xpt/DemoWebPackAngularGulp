@@ -36,5 +36,5 @@ app.controller('ctrApp', ['$scope', '$route', '$routeParams', '$location', funct
 }]);
 
 app.controller('ctrIndex', ['$scope',function($scope){
-	$scope.aaa = "Ok";
+	$scope.titulo = "ao estudo de caso usando gulp, angular 1.4.x com webpack!";
 }]);
