@@ -15,6 +15,9 @@ app.config(['$routeProvider','$locationProvider', function($routeProvider, $loca
 		templateUrl: '/template/main.html',
 		controller: 'ctrIndex'
 	})
+	.when('/404', {
+		templateUrl: '/template/404.html'
+	})
 	.otherwise({
 		redirectTo: '/404'
 	});
