@@ -21,16 +21,19 @@ module.exports = {
     module: {
         noParse: [],
         loaders: [
-            { test: /\.html$/, loader: 'html!html-minify'/*'html'*/ },
+            { test: /\.html$/, loader:'html' },
         ]
     },
-    'html-minify-loader': {
+    /*'html-minify-loader': {
         empty: true,        // KEEP empty attributes
         cdata: true,        // KEEP CDATA from scripts
         comments: true     // KEEP comments
-    },
+    },*/
 	plugins: [
-		//new webpack.optimize.UglifyJsPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true,
+            mangle: false
+        }),
         new WebpackNotifierPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
@@ -38,3 +41,4 @@ module.exports = {
 	]
 };
 
+ /*'html!html-minify'*/

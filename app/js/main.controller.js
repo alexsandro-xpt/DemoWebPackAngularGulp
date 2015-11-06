@@ -2,11 +2,7 @@
 var app = angular.module('app', ['ui.router', 'ngResource', 'oc.lazyLoad']);
 
 
-app.config(['$urlRouterProvider','$stateProvider','$locationProvider',
-    '$controllerProvider',
-    '$compileProvider',
-    '$filterProvider',
-    '$provide', function($urlRouterProvider, $stateProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$controllerProvider', '$compileProvider', '$filterProvider','$provide', function($urlRouterProvider, $stateProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
 		
 	$urlRouterProvider.otherwise('/404');
 
