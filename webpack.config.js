@@ -7,7 +7,8 @@ module.exports = {
     context: path.resolve(__dirname, "app"),
     devtool: 'eval',
     entry: {
-        app: ["./js/index.js"]
+        app: ['./js/index.js'/*, './template/main/main.controller.js'*/]
+        //,'index.html': 'index.html'
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -17,14 +18,14 @@ module.exports = {
     resolve: {
         root: [path.join(__dirname, "bower_components")]
     },
-    /*loaders: [
-      {
-        test:   /\.css$/,
-        loader: "style-loader!css-loader"
-      }
-    ],*/
+    module: {
+        noParse: [],
+        loaders: [
+            { test: /\.html$/, loader: 'raw' },
+        ]
+    },
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin(),
+		//new webpack.optimize.UglifyJsPlugin(),
         new WebpackNotifierPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
