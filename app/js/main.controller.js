@@ -13,23 +13,37 @@ app.config(['$urlRouterProvider','$stateProvider','$locationProvider',
 	$stateProvider
 	.state('/', {
 		url: '/',
-		template: require('../template/main/main.html'),
+        templateProvider: function($q) {
+			return $q(function(resolve) {
+				// lazy load the view
+				require.ensure([], function() {
+					resolve(require('../template/main/main.html'));
+				});
+			});
+        },
 		controller: 'ctrMain',
 		resolve: {
 			loadCtrMain: function($q, $ocLazyLoad) {
 				return $q(function(resolve) {
 					require.ensure([], function() {
 						// load whole module
-						var module = require('../template/main/main');
-						$ocLazyLoad.load({name: 'main'});
-						resolve(module.controller);
+						var modulo = require('../template/main/main');
+						$ocLazyLoad.load({name: modulo.name/*'main'*/});
+						resolve(modulo.controller);
 					});
 				});
 			}
 		}
 	}).state('404', {
 		url: '/404',
-		template: require('../template/404/404.html')
+        templateProvider: function($q) {
+			return $q(function(resolve) {
+				// lazy load the view
+				require.ensure([], function() {
+					resolve(require('../template/404/404.html'));
+				});
+			});
+        }
 	});
 	
 
