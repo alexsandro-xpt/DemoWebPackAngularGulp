@@ -21,8 +21,13 @@ module.exports = {
     module: {
         noParse: [],
         loaders: [
-            { test: /\.html$/, loader: 'raw!html-minify'/*'html'*/ },
+            { test: /\.html$/, loader: 'html!html-minify'/*'html'*/ },
         ]
+    },
+    'html-minify-loader': {
+        empty: true,        // KEEP empty attributes
+        cdata: true,        // KEEP CDATA from scripts
+        comments: true     // KEEP comments
     },
 	plugins: [
 		//new webpack.optimize.UglifyJsPlugin(),
