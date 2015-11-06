@@ -1,15 +1,70 @@
 'use strict';
+var app = angular.module('app', ['ui.router', 'ngResource', 'oc.lazyLoad']);
 
-require("angular");
-require("angular-ui-router");
-require("oclazyload");
-require("angular-resource");
 
-var appModule = require('./main.controller');  
+app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$controllerProvider', '$compileProvider', '$filterProvider','$provide', function($urlRouterProvider, $stateProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+		
+	$urlRouterProvider.otherwise('/404');
 
-angular.element(document).ready(function () {  
-  angular.bootstrap(document, [appModule.name], {
-    //strictDi: true
-  });
-});
+	$stateProvider
+	.state('/', {
+		url: '/',
+        templateProvider: function($q) {
+			return $q(function(resolve) {
+				// lazy load the view
+				require.ensure([], function() {
+					resolve(require('../template/main/main.html'));
+				});
+			});
+        },
+		controller: 'ctrMain',
+		resolve: {
+			loadCtrMain: function($q, $ocLazyLoad) {
+				return $q(function(resolve) {
+					require.ensure([], function() {
+						// load whole module
+						var modulo = require('../template/main/main');
+						$ocLazyLoad.load({name: modulo.name/*'main'*/});
+						resolve(modulo.controller);
+					});
+				});
+			}
+		}
+	}).state('404', {
+		url: '/404',
+        templateProvider: function($q) {
+			return $q(function(resolve) {
+				// lazy load the view
+				require.ensure([], function() {
+					resolve(require('../template/404/404.html'));
+				});
+			});
+        }
+	});
+	
 
+	
+	$locationProvider.html5Mode({
+	  enabled: true,
+	  requireBase: false
+	});
+	
+	//store a reference to various provider functions
+	/*window.app.components = {
+		controller: $controllerProvider.register
+		,service: $provide.service
+	};*/
+
+}]); 
+
+app.controller('ctrApp', ['$scope', /*'$route', '$routeParams',*/ '$location', function ($scope, /*$route, $routeParams,*/ $location) {
+     //$scope.$route = $route;
+     $scope.$location = $location;
+     //$scope.$routeParams = $routeParams;
+}]);
+
+
+
+
+
+module.exports = app;

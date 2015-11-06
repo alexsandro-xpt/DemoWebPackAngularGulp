@@ -7,7 +7,7 @@ module.exports = {
     context: path.resolve(__dirname, "app"),
     devtool: 'eval',
     entry: {
-        app: ['./js/index.js'/*, './template/main/main.controller.js'*/]
+        app: ['./js/app.js'/*, './template/main/main.controller.js'*/]
         //,'index.html': 'index.html'
     },
     output: {
