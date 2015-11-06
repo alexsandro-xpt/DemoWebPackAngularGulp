@@ -11,6 +11,8 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.7",
+    "html-loader": "^0.3.0",
+    "html-minify-loader": "^1.0.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1",
     "webpack-notifier": "^1.2.1"

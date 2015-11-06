@@ -1,7 +1,8 @@
 'use strict';
 
 require("angular");
-require("angular-route");
+require("angular-ui-router");
+require("oclazyload");
 require("angular-resource");
 
 var appModule = require('./main.controller');  

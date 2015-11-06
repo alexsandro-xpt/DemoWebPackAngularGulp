@@ -1,44 +1,39 @@
-var app = angular.module('app', ['ngRoute', 'ngResource']);
+'use strict';
+var app = angular.module('app', ['ui.router', 'ngResource', 'oc.lazyLoad']);
 
 
-app.config(['$routeProvider','$locationProvider',
+app.config(['$urlRouterProvider','$stateProvider','$locationProvider',
     '$controllerProvider',
     '$compileProvider',
     '$filterProvider',
-    '$provide', function($routeProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
-	
-	$routeProvider
-	.when('/', {
-		templateUrl: '/template/main/main.html',
-		controller: 'ctrMain'/*,
+    '$provide', function($urlRouterProvider, $stateProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
+		
+	$urlRouterProvider.otherwise('/404');
+
+	$stateProvider
+	.state('/', {
+		url: '/',
+		template: require('../template/main/main.html'),
+		controller: 'ctrMain',
 		resolve: {
-			load: ['$q', '$rootScope', function ($q, $rootScope) {
-
-				var deferred = $q.defer();
-
-				// lazy load controllers, etc.
-				require ([
-					'main.controller.js'
-				], function () {
-
-					$rootScope.$apply(function () {
-						deferred.resolve();
+			loadCtrMain: function($q, $ocLazyLoad) {
+				return $q(function(resolve) {
+					require.ensure([], function() {
+						// load whole module
+						var module = require('../template/main/main');
+						$ocLazyLoad.load({name: 'main'});
+						resolve(module.controller);
 					});
-
 				});
-
-				return deferred.promise;
-			}]
-		}*/
-	})
-	.when('/404', {
-		templateUrl: '/template/404/404.html'
-	})
-	.otherwise({
-		redirectTo: '/404'
+			}
+		}
+	}).state('404', {
+		url: '/404',
+		template: require('../template/404/404.html')
 	});
 	
-	// configure html5 to get links working on jsfiddle
+
+	
 	$locationProvider.html5Mode({
 	  enabled: true,
 	  requireBase: false
@@ -52,16 +47,13 @@ app.config(['$routeProvider','$locationProvider',
 
 }]); 
 
-app.controller('ctrApp', ['$scope', '$route', '$routeParams', '$location', function ($scope, $route, $routeParams, $location) {
-     $scope.$route = $route;
+app.controller('ctrApp', ['$scope', /*'$route', '$routeParams',*/ '$location', function ($scope, /*$route, $routeParams,*/ $location) {
+     //$scope.$route = $route;
      $scope.$location = $location;
-     $scope.$routeParams = $routeParams;
+     //$scope.$routeParams = $routeParams;
 }]);
 
 
-app.controller('ctrMain', ['$scope',function($scope){
-	$scope.titulo = "ao estudo de caso usando gulp, angular 1.4.x com webpack!";
-}]);
 
 
 

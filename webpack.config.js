@@ -21,7 +21,7 @@ module.exports = {
     module: {
         noParse: [],
         loaders: [
-            { test: /\.html$/, loader: 'raw' },
+            { test: /\.html$/, loader: 'raw!html-minify'/*'html'*/ },
         ]
     },
 	plugins: [
