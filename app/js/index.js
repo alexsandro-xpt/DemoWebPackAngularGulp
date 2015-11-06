@@ -19,7 +19,7 @@ app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$control
         },
 		controller: 'ctrMain',
 		resolve: {
-			loadCtrMain: function($q, $ocLazyLoad) {
+			load: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad) {
 				return $q(function(resolve) {
 					require.ensure([], function() {
 						// load whole module
@@ -28,7 +28,7 @@ app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$control
 						resolve(modulo.controller);
 					});
 				});
-			}
+			}]
 		}
 	}).state('404', {
 		url: '/404',
@@ -39,7 +39,20 @@ app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$control
 					resolve(require('../template/404/404.html'));
 				});
 			});
-        }
+        },
+		controller: 'ctr404',
+		resolve: {
+			load: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad) {
+				return $q(function(resolve) {
+					require.ensure([], function() {
+						// load whole module
+						var modulo = require('../template/404/404');
+						$ocLazyLoad.load({name: modulo.name});
+						resolve(modulo.controller);
+					});
+				});
+			}]
+		}
 	});
 	
 
