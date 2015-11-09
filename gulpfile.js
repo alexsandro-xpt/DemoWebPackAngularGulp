@@ -1,5 +1,6 @@
 var gulp = require("gulp");
 var gutil = require("gulp-util");
+var path = require("path");
 var webpack = require("webpack");
 var WebpackDevServer = require("webpack-dev-server");
 var webpackConfig = require("./webpack.config.js");
@@ -10,6 +11,7 @@ myDevConfig.devtool = "sourcemap";
 myDevConfig.debug = true;
 myDevConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080");
 //myDevConfig.entry.app.unshift('webpack/hot/only-dev-server');
+
 
 gulp.task("webpack", function(callback) {
     
