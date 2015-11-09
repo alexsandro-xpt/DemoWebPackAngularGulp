@@ -7,13 +7,13 @@ module.exports = {
     context: path.resolve(__dirname, "app"),
     devtool: 'eval',
     entry: {
-        app: ['./js/app.js'], vendors: ['angular'] 
+        app: ['./js/app.js'], vendors: ['angular', 'angular-resource', 'angular-ui-router', 'oclazyload']
     },
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "js/",
         filename: "bundle.js"
-        //,chunkFilename: "[id].bundle.js"
+        ,chunkFilename: "[id].bundle.js"
     },
     resolve: {
         root: [path.join(__dirname, "bower_components")]
@@ -21,8 +21,8 @@ module.exports = {
     module: {
         noParse: [],
         loaders: [
-            { test: /\.html$/, loader:'html!html-minify' },
-            /*{
+            { test: /\.html$/, loader:'html!html-minify' }/*,
+            {
                 test: /\.js$/,
                 
                 // There is not need to run the loader through
@@ -40,7 +40,10 @@ module.exports = {
 	plugins: [
 		new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
-            mangle: false, minimize: true
+            mangle: {
+                except: ['$q', '$ocLazyLoad']
+            },
+            minimize: true
         }),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])

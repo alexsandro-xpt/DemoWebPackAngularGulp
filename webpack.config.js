@@ -7,14 +7,19 @@ module.exports = {
     context: path.resolve(__dirname, "app"),
     devtool: 'eval',
     entry: {
-        app: ['./js/app.js'/*, './template/main/main.controller.js'*/]
-        //,'index.html': 'index.html'
+        app: ['./js/app.js'],
+        vendors: ['angular', 'angular-resource', 'angular-ui-router', 'oclazyload']
     },
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "js/",
         filename: "bundle.js"
     },
+    externals:[
+        {
+            //angular:'angular'
+        }
+    ],
     resolve: {
         root: [path.join(__dirname, "bower_components")]
     },
@@ -40,7 +45,8 @@ module.exports = {
         new WebpackNotifierPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
-        )
+        ),
+        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
 	]
 };
 
