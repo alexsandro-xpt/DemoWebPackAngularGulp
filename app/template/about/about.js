@@ -1,7 +1,7 @@
 'use strict';
 
 
-var modulo = angular.module('404', []);
+var modulo = angular.module('about', []);
 
 
 modulo.run(['$q', '$ocLazyLoad', function($q, $ocLazyLoad) {
@@ -17,10 +17,9 @@ modulo.run(['$q', '$ocLazyLoad', function($q, $ocLazyLoad) {
 
 
 
-modulo.controller('ctr404', ['$scope',function($scope){
+modulo.controller('ctrAbout', ['$scope',function($scope){
 
 }]);
 
 
 module.exports = modulo;
-

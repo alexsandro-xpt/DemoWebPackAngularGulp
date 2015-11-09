@@ -1,6 +1,8 @@
 'use strict';
 
-var modulo = angular.module('ui.alex',[]);
+require('../ui.alex');
+
+var modulo = angular.module(require('../ui.alex').name);
 
 modulo.directive('data',[function(){
 	return {

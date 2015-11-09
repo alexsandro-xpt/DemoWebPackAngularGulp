@@ -1,13 +1,17 @@
 'use strict';
+
+
+
+
 var app = angular.module('app', ['ui.router', 'ngResource', 'oc.lazyLoad']);
 
 
 app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$controllerProvider', '$compileProvider', '$filterProvider','$provide', function($urlRouterProvider, $stateProvider, $locationProvider, $controllerProvider, $compileProvider, $filterProvider, $provide) {
-		
+
+
 	$urlRouterProvider.otherwise('/404');
 
-	$stateProvider
-	.state('/', {
+	$stateProvider.state('/', {
 		url: '/',
         templateProvider: function($q) {
 			return $q(function(resolve) {
@@ -53,20 +57,36 @@ app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$control
 				});
 			}]
 		}
+	}).state('about', {
+		url: '/about',
+        templateProvider: function($q) {
+			return $q(function(resolve) {
+				// lazy load the view
+				require.ensure([], function() {
+					resolve(require('../template/about/about.html'));
+				});
+			});
+        },
+		controller: 'ctrAbout',
+		resolve: {
+			load: ['$q', '$ocLazyLoad', function($q, $ocLazyLoad) {
+				return $q(function(resolve) {
+					require.ensure([], function() {
+						// load whole module
+						var modulo = require('../template/about/about');
+						$ocLazyLoad.load({name: modulo.name});
+						resolve(modulo.controller);
+					});
+				});
+			}]
+		}
 	});
 	
 
-	
 	$locationProvider.html5Mode({
 	  enabled: true,
 	  requireBase: false
 	});
-	
-	//store a reference to various provider functions
-	/*window.app.components = {
-		controller: $controllerProvider.register
-		,service: $provide.service
-	};*/
 
 }]); 
 

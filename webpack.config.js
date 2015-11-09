@@ -30,10 +30,13 @@ module.exports = {
         comments: true     // KEEP comments
     },*/
 	plugins: [
-		new webpack.optimize.UglifyJsPlugin({
+		/*new webpack.optimize.UglifyJsPlugin({
             sourceMap: true,
-            mangle: false
-        }),
+            //mangle: false
+            mangle: {
+                except: ['$q', '$ocLazyLoad']
+            }
+        }),*/
         new WebpackNotifierPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])

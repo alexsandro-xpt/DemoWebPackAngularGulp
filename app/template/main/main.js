@@ -1,29 +1,35 @@
 'use strict';
 
-/*
-var aaa = require.ensure([], function() {
-	require('./../../js/directive/date/date');
-	var modulo = angular.module('main', ['ui.alex']);
-	modulo.controller('ctrMain', ['$scope',function($scope){
-		$scope.titulo = "usando gulp, angular 1.4.x com webpack!";
-	}])
-	
-	return modulo;
-});
 
-module.exports = aaa;
+var modulo = angular.module('main', []);
 
-*/
 
-var modulo = angular.module('main', [require('./../../js/directive/date/date').name]);
+modulo.run(['$q', '$ocLazyLoad', function($q, $ocLazyLoad) {
+	return $q(function(resolve) {
+
+		require.ensure([], function() {
+			var modulo = require('./../../js/directive/topTrends/topTrends');
+			$ocLazyLoad.load({name: modulo.name});
+			resolve(modulo.directive);
+			
+			var modulo1 = require('./../../js/directive/date/date');
+			$ocLazyLoad.load({name: modulo1.name});
+			resolve(modulo1.directive);
+		});
+		/*
+		require.ensure([], function() {
+
+		});*/
+
+	});
+}]);
+
+
 
 
 modulo.controller('ctrMain', ['$scope', '$ocLazyLoad', '$injector', function($scope, $ocLazyLoad, $injector){
 	$scope.titulo = "usando gulp, angular 1.4.x com webpack!";
-
 }]);
 
+
 module.exports = modulo;
-
-
-
