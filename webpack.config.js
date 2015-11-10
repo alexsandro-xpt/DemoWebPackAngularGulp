@@ -9,7 +9,7 @@ module.exports = {
     devtool: 'eval',
     entry: {
         app: ['./js/app.js'],
-        vendors: ['angular', 'angular-resource', 'angular-ui-router', 'oclazyload']
+        vendors: ['angular', 'angular-resource', 'angular-ui-router', 'oclazyload', 'devextreme/js/dx.all']
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -28,6 +28,7 @@ module.exports = {
         noParse: [],
         loaders: [
             { test: /\.html$/, loader:'html' },
+            { test: /\.css$/, loader:'style-loader!css-loader' }
         ]
     },
     /*'html-minify-loader': {
