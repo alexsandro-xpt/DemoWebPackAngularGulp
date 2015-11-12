@@ -8,11 +8,11 @@ modulo.run(['$q', '$ocLazyLoad', function($q, $ocLazyLoad) {
 	return $q(function(resolve) {
 
 		require.ensure([], function() {
-			var modulo = require('./../../js/directive/topTrends/topTrends');
+			var modulo = require('./../../assets/js/directive/topTrends/topTrends');
 			$ocLazyLoad.load({name: modulo.name});
 			resolve(modulo.directive);
 			
-			var modulo1 = require('./../../js/directive/date/date');
+			var modulo1 = require('./../../assets/js/directive/date/date');
 			$ocLazyLoad.load({name: modulo1.name});
 			resolve(modulo1.directive);
 		});

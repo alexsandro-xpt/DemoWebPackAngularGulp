@@ -1,4 +1,5 @@
 var gulp = require("gulp");
+var mainBowerFiles = require('main-bower-files');
 var gutil = require("gulp-util");
 var path = require("path");
 var webpack = require("webpack");
@@ -12,6 +13,24 @@ myDevConfig.debug = true;
 myDevConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080");
 //myDevConfig.entry.app.unshift('webpack/hot/only-dev-server');
 
+
+gulp.task('copyJs', function() {
+    return gulp.src(mainBowerFiles({ filter: /jquery.js|dx\.all\.js|globalize\.js$/i }))
+        .pipe(gulp.dest('app/assets/vendors/js/'))
+});
+
+
+gulp.task('copyCss', function() {
+    return gulp.src(mainBowerFiles({ filter: /dx\.common\.css|dx\.light\.css$/i }))
+        .pipe(gulp.dest('app/assets/vendors/css/'))
+});
+
+gulp.task('copyIcon', function() {
+    return gulp.src(mainBowerFiles({ filter: /(dxicons|dxiconsios)\.(eot|ttf|woff)$/i }))
+        .pipe(gulp.dest('app/assets/vendors/css/icons/'))
+});
+
+gulp.task("copyLibs", ['copyJs', 'copyCss', 'copyIcon']);
 
 gulp.task("webpack", function(callback) {
     

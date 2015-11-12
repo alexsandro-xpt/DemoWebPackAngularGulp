@@ -21,6 +21,7 @@
     "angular-ui-router": "~0.2.15",
     "oclazyload": "~1.0.8",
     "devextreme": "~15.1.7",
-    "jquery": "~2.1.4"
+    "jquery": "~2.1.4",
+    "angular-sanitize": "~1.4.7"
   }
 }

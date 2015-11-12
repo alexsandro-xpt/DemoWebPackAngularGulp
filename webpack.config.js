@@ -8,17 +8,18 @@ module.exports = {
     context: path.resolve(__dirname, "app"),
     devtool: 'eval',
     entry: {
-        app: ['./js/app.js'],
-        vendors: ['angular', 'angular-resource', 'angular-ui-router', 'oclazyload', 'devextreme/js/dx.all']
+        app: ['./assets/js/index.js'],
+        vendors: ['angular', 'angular-resource', 'angular-ui-router', 'angular-sanitize', 'oclazyload'/*,'jquery', 'devextreme/js/dx.all'*/]
     },
     output: {
         path: path.resolve(__dirname, "dist"),
-        publicPath: "js/",
-        filename: "bundle.js"
+        publicPath: "assets/",
+        filename: "js/appbundle.js"
     },
     externals:[
         {
-            //angular:'angular'
+            jquery:'jQuery',
+            DevExpress:'DevExpress'
         }
     ],
     resolve: {
@@ -44,11 +45,17 @@ module.exports = {
                 except: ['$q', '$ocLazyLoad']
             }
         }),*/
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery", DevExpress: "DevExpress", "window.DevExpress":"DevExpress"
+        }),
         new WebpackNotifierPlugin(),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
         ),
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js')
+        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors/js/applibs.js'),
+        new webpack.optimize.DedupePlugin()
 	]
 };
 

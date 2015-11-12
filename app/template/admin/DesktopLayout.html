@@ -1,0 +1,72 @@
+﻿<div class="desktop-layout" data-options="dxLayout : { name: 'desktop', platform: 'generic' } ">
+    <div class="page">
+        <div class="wrapper">
+            <header>
+                <div class="logo" />Logo
+            </header>
+        </div>
+        <div class="main-menu dx-desktop-layout-main-menu">
+            <div class="wrapper">
+                <nav id="navBar" data-bind="dxNavBar: {}" data-options="dxCommandContainer : { id: 'global-navigation', contentCssPosition: 'static' }"></nav>
+            </div>
+        </div>
+        <div class="toolbar dx-desktop-layout-toolbar">
+            <div class="wrapper" data-options="dxContentPlaceholder : { name: 'header', contentCssPosition: 'static' } ">
+                <div data-bind="dxToolbar: { items: [{ text: title, location: 'before', template: 'titleTemplate' }] }" data-options="dxCommandContainer : { id: 'desktop-toolbar' }">
+                    <div data-options="dxTemplate:{name:'titleTemplate'}">
+                        <h2 data-bind="text: text"></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <div class="content-wrapper">
+                <div class="content" data-options="dxContentPlaceholder : { name: 'content', contentCssPosition: 'static' } ">
+                    {{data}}
+                    <div class="dx-fieldset">
+                        <div class="dx-field">
+                            <div class="dx-field-label">Date</div>
+                            <div class="dx-field-value">
+                                <div id="date" dx-date-box="dataConfig"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div dx-data-grid="gridConfig" id="gridDemo"></div>
+
+    <div dx-tab-panel="{
+        swipeEnabled: true,
+        loop: true,
+        animationEnabled: true,
+        
+        dataSource: tabPanelItems,
+        titleTemplate: 'title',
+        itemTemplate: 'tab',
+        height: 300
+    }">
+        <div data-options="dxTemplate : { name: 'title' } ">
+            <p>{{title}}</p>
+        </div>
+        <div data-options="dxTemplate : { name: 'tab' } ">
+            <div style="margin:25px;">
+                <h1>{{title}}</h1>
+                <p>&nbsp;</p>
+                <div style="text-align:left;" ng-repeat="item in dataArray">
+                    <p>{{item.propertyKey}}: <b>{{item.propertyValue}}</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+                </div>
+            </div>
+
+            <div class="footer-gap"></div>
+        </div>
+        <footer>
+            <div class="wrapper copyright dx-desktop-layout-copyright">2015&nbsp;&copy;&nbsp;Copyright Text</div>
+        </footer>
+    </div>
+</div>
