@@ -30,7 +30,11 @@ modulo.controller('ctrAdmin', ['$scope','$http', '$q', function($scope, $http, $
                                 $http.get('http://www.filltext.com/?rows=10&author={firstName}&title={lastName}&cep={phone|format}&genre={streetAddress}&format={city}&language={usState|abbr}&year={zip}')
                                 .success(function(data){
                                         a.resolve(data);
-                                });
+                                }).error(function (err) {
+                                        //http://js.devexpress.com/Demos/WidgetsGallery/#demo/dialogs_and_notifications-toast-overview
+                                        DevExpress.ui.notify("Grid erro: " + err, "error", 2000);
+                                        console.error("Grid erro: ", err);
+                                });;
                                 return a.promise;
                         },
                         totalCount: function (loadOptions) {
