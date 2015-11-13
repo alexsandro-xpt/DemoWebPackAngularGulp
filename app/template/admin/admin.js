@@ -7,7 +7,7 @@ require("../../template/admin/DesktopLayout.js");
 
 var modulo = angular.module('admin', ['dx']);
 
-modulo.controller('ctrAdmin', ['$scope','$http', '$q', function($scope, $http, $q){
+modulo.controller('ctrAdmin', ['$scope','$http', '$q', 'dx', function($scope, $http, $q, dx){
 
         /*
         $http.get('http://www.filltext.com/?delay=3&rows=40&author={firstName}&title={lastName}&cep={phone|format}&genre={streetAddress}&format={city}&language={usState|abbr}&year={zip}').
@@ -18,6 +18,7 @@ modulo.controller('ctrAdmin', ['$scope','$http', '$q', function($scope, $http, $
                 console.log("Error");
         });*/
         
+       
         //http://js.devexpress.com/Documentation/ApiReference/Data_Layer/DataSource/Methods/?version=15_1
         //https://www.devexpress.com/Support/Center/Question/Details/T119195
         //http://js.devexpress.com/Documentation/Guide/UI_Widgets/Data_Grid/Data_Binding/?version=14_1#Provide_Data
@@ -32,7 +33,7 @@ modulo.controller('ctrAdmin', ['$scope','$http', '$q', function($scope, $http, $
                                         a.resolve(data);
                                 }).error(function (err) {
                                         //http://js.devexpress.com/Demos/WidgetsGallery/#demo/dialogs_and_notifications-toast-overview
-                                        DevExpress.ui.notify("Grid erro: " + err, "error", 2000);
+                                        dx.ui.notify("Grid erro: " + err, "error", 2000);
                                         console.error("Grid erro: ", err);
                                 });;
                                 return a.promise;
@@ -98,7 +99,7 @@ modulo.controller('ctrAdmin', ['$scope','$http', '$q', function($scope, $http, $
                 }
         ];        
         
-        $scope.tabPanelItems = new DevExpress.data.DataSource({
+        $scope.tabPanelItems = new dx.data.DataSource({
                 store: dataItems,
                 map: function (itemData) {
                 itemData.text = itemData.title;
@@ -112,6 +113,8 @@ modulo.controller('ctrAdmin', ['$scope','$http', '$q', function($scope, $http, $
                 }
         });
         
+        
+        dx.ui.notify("Página carregada!", "success", 2000);
 }]);
 
 

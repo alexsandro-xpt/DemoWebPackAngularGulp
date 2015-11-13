@@ -6,7 +6,8 @@ require("oclazyload");
 require("angular-resource");
 //require('jquery');
 /*require("devextreme/css/dx.common.css");*/
-//require("DevExpress");
+var dx = require("DevExpress");
+
 
 var app = angular.module('app', ['ui.router', 'ngResource', 'oc.lazyLoad', 'ngSanitize', require('./app.rotas').name]);
 
@@ -36,6 +37,10 @@ app.controller('ctrApp', ['$scope', /*'$route', '$routeParams',*/ '$location', f
      //$scope.$routeParams = $routeParams;
 }]);
 
+
+app.factory('dx', function(){
+	return dx;//window.DevExpress;
+})
 
 
 
