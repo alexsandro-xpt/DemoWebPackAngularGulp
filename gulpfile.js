@@ -10,7 +10,7 @@ var webpackConfig = require("./webpack.config.js");
 var myDevConfig = Object.create(webpackConfig);
 myDevConfig.devtool = "sourcemap";
 myDevConfig.debug = true;
-myDevConfig.entry.app.unshift("webpack-dev-server/client?http://localhost:8080");
+myDevConfig.entry.app.unshift("webpack-dev-server/client?http://0.0.0.0:8080");
 //myDevConfig.entry.app.unshift('webpack/hot/only-dev-server');
 
 
@@ -63,7 +63,7 @@ gulp.task("webpack-dev-server", function(callback) {
 			colors: true
 		}
         //,hot: true
-    }).listen(8080, "localhost", function(err) {
+    }).listen(8080, "0.0.0.0", function(err) {
         if(err) throw new gutil.PluginError("webpack-dev-server", err);
         // Server listening
         gutil.log("[webpack-dev-server]", "http://localhost:8080/");
