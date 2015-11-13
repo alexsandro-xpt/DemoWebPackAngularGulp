@@ -14,7 +14,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         publicPath: "assets/",
-        filename: "js/appbundle.js"
+        filename: "js/appbundle.js",
+        chunkFilename: "js/[id].bundle.js"
     },
     externals:[
         {
@@ -23,12 +24,14 @@ module.exports = {
         }
     ],
     resolve: {
-        root: [path.join(__dirname, "bower_components")]
+        root: [path.join(__dirname, "bower_components")],
+        alias:{angular: 'angular/angular.min.js'}
     },
     module: {
-        noParse: [],
+        noParse: ['angular/angular.min.js'],
         loaders: [
             { test: /\.html$/, loader:'html' },
+            { test: /\.(ttf|eot|woff(2)?)/, loader:'file' },
             { test: /\.css$/, loader:'style-loader!css-loader' }
         ]
     },
@@ -39,10 +42,16 @@ module.exports = {
     },*/
 	plugins: [
 		/*new webpack.optimize.UglifyJsPlugin({
-            sourceMap: true,
-            //mangle: false
+            //sourceMap: true,
             mangle: {
                 except: ['$q', '$ocLazyLoad']
+            },
+            minimize: true,
+            output: {
+                comments: false
+            },
+            compress: {
+                warnings: false
             }
         }),*/
         new webpack.ProvidePlugin({

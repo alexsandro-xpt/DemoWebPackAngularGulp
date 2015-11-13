@@ -4,8 +4,10 @@ require("angular-sanitize");
 require("angular-ui-router");
 require("oclazyload");
 require("angular-resource");
-//require('jquery');
-/*require("devextreme/css/dx.common.css");*/
+var jq = require('jquery');/*
+require("../vendors/css/dx.common.css");
+require("../vendors/css/dx.light.css");*/
+require("../vendors/css/main.css");
 var dx = require("DevExpress");
 
 

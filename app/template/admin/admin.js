@@ -26,7 +26,7 @@ modulo.controller('ctrAdmin', ['$scope','$http', '$q', 'dx', function($scope, $h
         $scope.gridConfig = {
                 dataSource: {
                         load: function(loadOptions){
-                                console.log('load', loadOptions);
+                                //console.log('load', loadOptions);
                                 var a = $q.defer();
                                 $http.get('http://www.filltext.com/?rows=10&author={firstName}&title={lastName}&cep={phone|format}&genre={streetAddress}&format={city}&language={usState|abbr}&year={zip}')
                                 .success(function(data){
@@ -39,7 +39,7 @@ modulo.controller('ctrAdmin', ['$scope','$http', '$q', 'dx', function($scope, $h
                                 return a.promise;
                         },
                         totalCount: function (loadOptions) {
-                                console.log('totalCount', loadOptions);
+                                //console.log('totalCount', loadOptions);
                                 var def = $q.defer();
                                 //Isto define a paginação.
                                 def.resolve(40);
