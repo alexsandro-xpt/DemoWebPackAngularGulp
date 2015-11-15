@@ -1,7 +1,7 @@
 'use strict';
 
 
-require("../../template/admin/DesktopLayout.js");
+require("./DesktopLayout.js");
 
 
 

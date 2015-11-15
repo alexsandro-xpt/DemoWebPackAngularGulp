@@ -8,7 +8,7 @@ modulo.config(['$provide', function($provide){
 	
 	var rotas = [];
 	
-	var req = require.context("../../template", true, /^.*rota\.js$/igm);///^(.*rota\.(js$))[^.]*$/igm
+	var req = require.context("../../views", true, /^.*rota\.js$/igm);///^(.*rota\.(js$))[^.]*$/igm
 	req.keys().forEach(function(key){
 		rotas.push(req(key));
 	});
