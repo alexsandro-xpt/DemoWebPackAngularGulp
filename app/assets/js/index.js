@@ -1,3 +1,5 @@
+//Compila para appbundle.js
+
 'use strict';
 
 require("angular");

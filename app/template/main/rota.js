@@ -1,7 +1,7 @@
 'use strict';
 
-module.exports = ['/', {
-	url: '/',
+module.exports = ['index', {
+	url: '',
 	templateProvider: function ($q) {
 		return $q(function (resolve) {
 			// lazy load the view

@@ -1,14 +1,19 @@
+//Compila para appbundle.js
+
 'use strict';
 
 require("angular-sanitize");
 require("angular-ui-router");
 require("oclazyload");
 require("angular-resource");
-var jq = require('jquery');/*
-require("../vendors/css/dx.common.css");
-require("../vendors/css/dx.light.css");*/
-require("../vendors/css/main.css");
+var jq = require('jquery');
 var dx = require("DevExpress");
+
+
+//Faz com que o css seja carregado de forma assíncrona.
+require.ensure([], function() {
+	require("../vendors/css/main.css");
+});
 
 
 var app = angular.module('app', ['ui.router', 'ngResource', 'oc.lazyLoad', 'ngSanitize', require('./app.rotas').name]);
@@ -19,12 +24,13 @@ app.config(['$urlRouterProvider','$stateProvider','$locationProvider', '$control
 , $filterProvider, $provide, rotas) {
 
 
-	$urlRouterProvider.otherwise('/404');
 	
 	for(var i=0, t = rotas.length; i < t; i++){
 		$stateProvider.state.apply(this, rotas[i]);
 	}
 
+
+	$urlRouterProvider.otherwise('/404');
 
 	/*$locationProvider.html5Mode({
 		enabled: true,
