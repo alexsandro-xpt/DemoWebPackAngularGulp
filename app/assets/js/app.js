@@ -6,6 +6,7 @@ require("angular-sanitize");
 require("angular-ui-router");
 require("oclazyload");
 require("angular-resource");
+
 var jq = require('jquery');
 var dx = require("DevExpress");
 

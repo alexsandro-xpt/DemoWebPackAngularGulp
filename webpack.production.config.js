@@ -35,9 +35,15 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
         ]
     },
     module: {
-        noParse: ['angular/angular.min.js'],
+        noParse: [
+            'angular/angular.min.js',
+            'angular-resource/angular-resource.min.js',
+            'angular-sanitize/angular-sanitize.min.js',
+            'angular-ui-router/release/angular-ui-router.min.js',
+            'oclazyload/dist/oclazyload.min.js'
+        ],
         loaders: [
-            { test: /\.html$/, loader:'html' },
+            { test: /\.html$/, loader:'html!html-minify' },
             { test: /\.(ttf|eot|woff(2)?)/, loader:'file' },
             { test: /\.css$/, loader:'style-loader!css-loader' }
         ]

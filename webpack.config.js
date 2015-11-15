@@ -25,14 +25,26 @@ module.exports = {
     ],
     resolve: {
         root: [path.join(__dirname, "bower_components")],
-        alias:{angular: 'angular/angular.min.js'}
+        alias:[
+            {angular: 'angular/angular.min.js'},
+            {'angular-resource': 'angular-resource/angular-resource.min.js'},
+            {'angular-sanitize': 'angular-sanitize/angular-sanitize.min.js'},
+            {'angular-ui-router': 'angular-ui-router/release/angular-ui-router.min.js'},
+            {oclazyload: 'oclazyload/dist/oclazyload.min.js'}
+        ]
     },
     module: {
-        noParse: ['angular/angular.min.js'],
+        noParse: [
+            'angular/angular.min.js',
+            'angular-resource/angular-resource.min.js',
+            'angular-sanitize/angular-sanitize.min.js',
+            'angular-ui-router/release/angular-ui-router.min.js',
+            'oclazyload/dist/oclazyload.min.js'
+        ],
         loaders: [
-            { test: /\.html$/, loader:'html' },
-            { test: /\.(ttf|eot|woff(2)?)/, loader:'file' },
-            { test: /\.css$/, loader:'style-loader!css-loader' }
+            { test: /\.html$/, loader: 'html' },
+            { test: /\.(ttf|eot|woff(2)?)/, loader: 'file' },
+            { test: /\.css$/, loader: 'style-loader!css-loader' }
         ]
     },
     /*'html-minify-loader': {
