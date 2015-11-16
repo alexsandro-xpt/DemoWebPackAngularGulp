@@ -30,7 +30,8 @@ module.exports = {
             {'angular-resource': 'angular-resource/angular-resource.min.js'},
             {'angular-sanitize': 'angular-sanitize/angular-sanitize.min.js'},
             {'angular-ui-router': 'angular-ui-router/release/angular-ui-router.min.js'},
-            {oclazyload: 'oclazyload/dist/oclazyload.min.js'}
+            {oclazyload: 'oclazyload/dist/oclazyload.min.js'},
+            //{DevExpress: 'devextreme/js/dx.all.js'}
         ]
     },
     module: {
@@ -44,7 +45,8 @@ module.exports = {
         loaders: [
             { test: /\.html$/, loader: 'html' },
             { test: /\.(ttf|eot|woff(2)?)/, loader: 'file' },
-            { test: /\.css$/, loader: 'style-loader!css-loader' }
+            { test: /\.css$/, loader: 'style-loader!css-loader' },
+            //{ test: /dx\.all\.js$/, loader: "expose?DevExpress" }
         ]
     },
     /*'html-minify-loader': {
@@ -69,7 +71,7 @@ module.exports = {
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
-            "window.jQuery": "jquery", DevExpress: "DevExpress", "window.DevExpress":"DevExpress"
+            "window.jQuery": "jquery", DevExpress: "DevExpress"/*, "window.DevExpress":"DevExpress"*/
         }),
         new WebpackNotifierPlugin(),
         new webpack.ResolverPlugin(

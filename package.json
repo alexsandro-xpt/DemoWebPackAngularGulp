@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^0.22.0",
+    "expose-loader": "^0.7.1",
     "file-loader": "^0.8.4",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.1",
