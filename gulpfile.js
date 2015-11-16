@@ -36,7 +36,7 @@ gulp.task('copyCss', function() {
     
      gulp.src('app/assets/vendors/css/', {read: false}).pipe(clean());
     
-    var filter = gulpFilter(['dx.common.css','dx.light.css']);
+    var filter = gulpFilter(['dx.common.css', 'dx.light.css']);
     
     return gulp.src('bower_components/**/*.css')
         .pipe(flatten()).pipe(filter)
@@ -64,7 +64,7 @@ gulp.task('copyIcon', function() {
 });
 
 //https://www.npmjs.com/package/gulp-webpack
-gulp.task("copyLibs", ['copyJs', 'copyCss', 'copyIcon']);
+gulp.task("copyLibs", [/*'copyJs', */'copyCss', 'copyIcon']);
 
 gulp.task("webpack", ['copyLibs'], function(callback) {
     
