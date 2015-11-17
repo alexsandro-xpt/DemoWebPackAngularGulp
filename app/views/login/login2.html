@@ -1,56 +1,75 @@
 <style>
 	.dx-field-label { text-align: right}
+	.dx-fieldset { margin: 0}
+
+.box {
+    height: 100%;
+}
+.header{ 
+    abackground-color: #f39e6c; 
+    text-align: center;
+}
+.content{ 
+    abackground-color: #f5e5a6; 
+}
+.left-side-bar{ 
+    abackground-color: #94d7c7; 
+}
+.right-side-bar{ 
+    abackground-color: #77c7e7; 
+}
+.footer{ 
+    abackground-color: #7b9bcf; 
+}
 </style>
 
-<div class="box" style="background:#eee" dx-responsive-box="{
-        rows: [
-            { ratio: 1 },
-        ],
-        cols: [
-            { ratio: 1 },
-        ]
-    }">
+<div style="height: 100%;">
 	
-	<div class="content" data-options="dxItem: {
-		location: [{ 
-			row: 0, 
-			col: 0
-		}, {row: 0, col: 0}]
-	}">
-
-			<p><strong>Bem-vindo</strong>, por favor, entre com sua conta.</p>
-            <div class="dx-fieldset">
-				<div class="dx-fieldset-header">Login</div>
-                <div class="dx-field">
-                    <div class="dx-field-label">E-mail</div>
-                    <div class="dx-field-value">
-                        <div dx-text-box="{ placeholder: 'Login' }"></div>
-                    </div>
-                </div>
-                <div class="dx-field">
-                    <div class="dx-field-label">Senha</div>
-                    <div class="dx-field-value">
-                        <div dx-text-box="{ mode: 'password', placeholder: 'Password' }"></div>
-                    </div>
-                </div>
-				<div class="dx-field">
-					<div class="dx-field-value">
-						<div id="checked" dx-check-box="{text:'Manter Conectado'}"></div>
+	<div id="box" dx-box="
+	{
+		direction: 'col',crossAlign: 'stretch'
+	}
+	">
+	
+		<div id="item1" data-options="dxItem:{ ratio: 1}">
+				<div style="width:400px;margin: 0 auto;">
+					
+					<p><strong>Bem-vindo</strong>, por favor, entre com sua conta.</p>
+					<div class="dx-fieldset">
+						<div class="dx-fieldset-header">Login:</div>
+						<div class="dx-field">
+							<div class="dx-field-label">E-mail:</div>
+							<div class="dx-field-value">
+								<div dx-text-box="{ placeholder: 'Usuário' }"></div>
+							</div>
+						</div>
+						<div class="dx-field">
+							<div class="dx-field-label">Senha</div>
+							<div class="dx-field-value">
+								<div dx-text-box="{ mode: 'password', placeholder: 'Senha' }"></div>
+							</div>
+						</div>
+						<div class="dx-field">
+							<div class="dx-field-value">
+								<div id="checked" dx-check-box="{text:'Manter conectado'}"></div>
+							</div>
+						</div>
+						<div class="dx-field" style="text-align:right">
+							<div id="default" dx-button="{text: 'Entrar', type: 'default'}"></div>
+							<div id="default" dx-button="{text: 'Sair', type: 'normal'}"></div>
+						</div>
+		
+		
+						<div class="dx-field">
+							<div class="dx-field-value" style="text-align:right">
+								<p><a href="/">Esqueceu a senha?</a></p>
+							</div>
+						</div>
 					</div>
+					
 				</div>
-				<div id="default" dx-button="{text: 'Entrar', type: 'default'}"></div>
-				<div id="default" dx-button="{text: 'Sair', type: 'normal'}"></div>
-
-				<div class="dx-field">
-					<div class="dx-field-value" style="text-align:right">
-						<p><a href="/">Esqueceu a senha?</a></p>
-					</div>
-				</div>
-            </div>
-
-
+		</div>
+	
 	</div>
 	
-	
 </div>
-

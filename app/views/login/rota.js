@@ -8,7 +8,7 @@ module.exports = ['login', {
 		return $q(function (resolve) {
 			// lazy load the view
 			require.ensure([], function () {
-				resolve(require('./' + view + '3.html'));
+				resolve(require('./' + view + '2.html'));
 			});
 		});
 	},

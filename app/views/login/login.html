@@ -1,110 +1,119 @@
+<style>
+	.dx-field-label { text-align: right}
+	.dx-fieldset { margin: 0}
+
+.box {
+    height: 100%;
+}
+.header{ 
+    abackground-color: #f39e6c; 
+    text-align: center;
+}
+.content{ 
+    abackground-color: #f5e5a6; 
+}
+.left-side-bar{ 
+    abackground-color: #94d7c7; 
+}
+.right-side-bar{ 
+    abackground-color: #77c7e7; 
+}
+.footer{ 
+    abackground-color: #7b9bcf; 
+}
+</style>
 <div class="box" dx-responsive-box="{
         rows: [
             { ratio: 1 },
             { ratio: 2 },
-            { ratio: 2, screen: 'sm md' },
+            { ratio: 2, screen: 'xs sm' },
             { ratio: 1 }
         ],
         cols: [
             { ratio: 1 },
-            { ratio: 2, screen: 'lg' },
+            { ratio: 1 },
             { ratio: 1 }
-        ],
-        height: 400
+        ],height: 700
     }">
-	<div class="header" data-options="dxItem: {
-		location: [{ 
-			row: 0, 
-			col: 0, 
-			colspan: 3, 
-			screen: 'lg'
-		}, { 
-			row: 0, 
-			col: 0, 
-			colspan: 2, 
-			screen: 'xs sm md'
-		}]
-	}">
-		<p>aaa</p>
+	
+	<div class="header" data-options="dxItem: { location: [{ row: 0, col: 0, colspan:3, screen: 'lg md' }, { row: 0, col: 0, colspan:3, screen: 'xs sm' }] }">
+		
+		<h1>Authentication</h1>
+		<p>Morbi vel sem ut sem interdum gravida et ut nisi. Donec pharetra elit non tortor blandit, ut imperdiet libero porta. Nunc et orci in erat ullamcorper pellentesque.</p>
+		
 	</div>
-	<div class="content" data-options="dxItem: {
-		location: [{ 
-			row: 1, 
-			col: 1, 
-			screen: 'lg' 
-		}, { 
-			row: 1, 
-			col: 0, 
-			colspan: 2, 
-			screen: 'xs sm md' 
-		}]
-	}">
-			<p><strong>Bem-vindo</strong>, por favor, entre com sua conta.</p>
-            <div class="dx-fieldset">
-				<div class="dx-fieldset-header">Login</div>
-                <div class="dx-field">
-                    <div class="dx-field-label">E-mail</div>
-                    <div class="dx-field-value">
-                        <div dx-text-box="{ placeholder: 'Login' }"></div>
-                    </div>
-                </div>
-                <div class="dx-field">
-                    <div class="dx-field-label">Senha</div>
-                    <div class="dx-field-value">
-                        <div dx-text-box="{ mode: 'password', placeholder: 'Password' }"></div>
-                    </div>
-                </div>
-				<div class="dx-field">
-					<div class="dx-field-value">
-						<div id="checked" dx-check-box="{text:'Manter Conectado'}"></div>
-					</div>
-				</div>
-				<div id="default" dx-button="{text: 'Entrar', type: 'default'}"></div>
-				<div id="default" dx-button="{text: 'Sair', type: 'normal'}"></div>
-
-				<div class="dx-field">
-					<div class="dx-field-value" style="text-align:right">
-						<p><a href="/">Esqueceu a senha?</a></p>
-					</div>
-				</div>
-            </div>
+	
+	<div class="footer" data-options="dxItem: { location: [{ row: 2, col: 0, colspan:3, screen: 'lg md' }, { row: 4, col: 0, colspan:3, screen: 'xs sm' }] }">
+		<p>Down</p>
 	</div>
+	
+	
 	<div class="left-side-bar" data-options="dxItem: {
 		location: [{ 
 			row: 1, 
-			col: 0, 
-			screen: 'lg' 
-		}, { 
-			row: 2, 
-			col: 0, 
-			screen: 'xs sm md' 
-		}]
+			col: 0, screen: 'lg md'
+		}, { row: 2, col: 0, screen: 'xs sm' }]
 	}">
-		<p>Lado 1</p>
+left-side-bar
 	</div>
+	
+	<div class="content" data-options="dxItem: {
+		location: [{ 
+			row: 1, 
+			col: 1, screen: 'lg md'
+		}, { row: 1, col: 0, screen: 'xs sm' }]
+	}">
+			<div style="width:400px;margin: 0 auto;">
+				
+				<p><strong>Bem-vindo</strong>, por favor, entre com sua conta.</p>
+				<div class="dx-fieldset">
+					<div class="dx-fieldset-header">Login:</div>
+					<div class="dx-field">
+						<div class="dx-field-label">E-mail:</div>
+						<div class="dx-field-value">
+							<div dx-text-box="{ placeholder: 'Usuário' }"></div>
+						</div>
+					</div>
+					<div class="dx-field">
+						<div class="dx-field-label">Senha</div>
+						<div class="dx-field-value">
+							<div dx-text-box="{ mode: 'password', placeholder: 'Senha' }"></div>
+						</div>
+					</div>
+					<div class="dx-field">
+						<div class="dx-field-value">
+							<div id="checked" dx-check-box="{text:'Manter conectado'}"></div>
+						</div>
+					</div>
+					<div class="dx-field" style="text-align:right">
+						<div id="default" dx-button="{text: 'Entrar', type: 'default'}"></div>
+						<div id="default" dx-button="{text: 'Sair', type: 'normal'}"></div>
+					</div>
+	
+	
+					<div class="dx-field">
+						<div class="dx-field-value" style="text-align:right">
+							<p><a href="/">Esqueceu a senha?</a></p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+
+
+	</div>
+
 	<div class="right-side-bar" data-options="dxItem: {
 		location: [{ 
 			row: 1, 
-			col: 2, screen: 'lg' 
-		}, { 
-			row: 2, 
-			col: 1, 
-			screen: 'xs sm md' }]
-		}">
-		<p>Lado 2</p>
+			col: 2, screen: 'lg md'
+		}, { row: 3, col: 0, screen: 'xs sm' }]
+	}">
+right-side-bar
 	</div>
-	<div class="footer" data-options="dxItem: {
-		location: [{ 
-			row: 2, 
-			col: 0, 
-			colspan: 3, 
-			screen: 'lg' 
-		}, { 
-			row: 3, 
-			col: 0, 
-			colspan: 2, 
-			screen: 'xs sm md' }]
-		}">
-		<p>fff</p>
-	</div>
+	
+
+	
 </div>
+
