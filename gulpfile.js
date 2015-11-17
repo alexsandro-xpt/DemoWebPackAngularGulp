@@ -12,6 +12,7 @@ var concat = require('gulp-concat');
 var cssmin = require('gulp-minify-css');
 var uglify = require('gulp-uglify');
 var gulpWebpack = require('gulp-webpack');
+var gulpsync = require('gulp-sync')(gulp);
 
 
 
@@ -64,9 +65,9 @@ gulp.task('copyIcon', function() {
 });
 
 //https://www.npmjs.com/package/gulp-webpack
-gulp.task("copyLibs", [/*'copyJs', */'copyCss', 'copyIcon']);
+gulp.task("copyLibs", ['copyJs', 'copyCss', 'copyIcon']);
 
-gulp.task("webpack", ['copyLibs'], function(callback) {
+gulp.task("webpack", function(callback) {
     
     
     gulp.src('dist', {read: false}).pipe(clean());
@@ -101,7 +102,7 @@ gulp.task("webpack", ['copyLibs'], function(callback) {
 });
 
 
-gulp.task("webpack-dev-server", ['copyLibs'], function(callback) {
+gulp.task("webpack-dev-server", function(callback) {
     
     var myDevConfig = Object.create(webpackConfig);
     myDevConfig.devtool = "sourcemap";
@@ -132,4 +133,14 @@ gulp.task("webpack-dev-server", ['copyLibs'], function(callback) {
 
 
 
-gulp.task('default', ['webpack-dev-server']);
+
+
+gulp.task('build', gulpsync.sync(['copyJs', 'copyCss', 'copyIcon', 'webpack']));
+
+
+gulp.task('dev', ['copyJs', 'copyCss', 'copyIcon', 'webpack-dev-server']);
+
+gulp.task('run', ['webpack-dev-server']);
+
+
+gulp.task('default', ['run']);

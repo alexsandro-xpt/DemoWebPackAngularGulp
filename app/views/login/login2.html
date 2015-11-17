@@ -1,57 +1,26 @@
-<div dx-box="{ }">
-    <div data-options="dxItem: firstItemOptions ">
-        . . .
-    </div>
-    <div data-options="dxItem: { badge: 'New'}">
-        . . .
-    </div>
-    <div data-options="dxItem: thirdItemOptions">
-        . . .
-    </div>
-</div>
-<div class="box" dx-responsive-box="{
-	rows: [
-		{ ratio: 1 },
-		{ ratio: 2 },
-		{ ratio: 2, screen: 'sm md' },
-		{ ratio: 1 }
-	],
-	cols: [
-		{ ratio: 1 },
-		{ ratio: 2, screen: 'lg' },
-		{ ratio: 1 }
-	],
-	height: 400
-}">
-	<div class="header" data-options="dxItem: {
-		location: [{ 
-			row: 0, 
-			col: 0, 
-			colspan: 3, 
-			screen: 'lg'
-		}, { 
-			row: 0, 
-			col: 0, 
-			colspan: 2, 
-			screen: 'xs sm md'
-		}]
-	}">
-		<p>aaa</p>
-	</div>
+<style>
+	.dx-field-label { text-align: right}
+</style>
+
+<div class="box" style="background:#eee" dx-responsive-box="{
+        rows: [
+            { ratio: 1 },
+        ],
+        cols: [
+            { ratio: 1 },
+        ]
+    }">
+	
 	<div class="content" data-options="dxItem: {
 		location: [{ 
-			row: 1, 
-			col: 1, 
-			screen: 'lg' 
-		}, { 
-			row: 1, 
-			col: 0, 
-			colspan: 2, 
-			screen: 'xs sm md' 
-		}]
+			row: 0, 
+			col: 0
+		}, {row: 0, col: 0}]
 	}">
+
+			<p><strong>Bem-vindo</strong>, por favor, entre com sua conta.</p>
             <div class="dx-fieldset">
-				<div class="dx-fieldset-header"><strong>Bem-vindo</strong>, por favor, entre com sua conta.</div>
+				<div class="dx-fieldset-header">Login</div>
                 <div class="dx-field">
                     <div class="dx-field-label">E-mail</div>
                     <div class="dx-field-value">
@@ -78,43 +47,10 @@
 					</div>
 				</div>
             </div>
+
+
 	</div>
-	<div class="left-side-bar" data-options="dxItem: {
-		location: [{ 
-			row: 1, 
-			col: 0, 
-			screen: 'lg' 
-		}, { 
-			row: 2, 
-			col: 0, 
-			screen: 'xs sm md' 
-		}]
-	}">
-		<p>ccc</p>
-	</div>
-	<div class="right-side-bar" data-options="dxItem: {
-		location: [{ 
-			row: 1, 
-			col: 2, screen: 'lg' 
-		}, { 
-			row: 2, 
-			col: 1, 
-			screen: 'xs sm md' }]
-		}">
-		<p>dd</p>
-	</div>
-	<div class="footer" data-options="dxItem: {
-		location: [{ 
-			row: 2, 
-			col: 0, 
-			colspan: 3, 
-			screen: 'lg' 
-		}, { 
-			row: 3, 
-			col: 0, 
-			colspan: 2, 
-			screen: 'xs sm md' }]
-		}">
-		<p>fff</p>
-	</div>
+	
+	
 </div>
+

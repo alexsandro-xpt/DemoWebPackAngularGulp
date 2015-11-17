@@ -1,0 +1,90 @@
+<style>
+	.dx-field-label { text-align: right}
+</style>
+<div class="box" dx-responsive-box="{
+        rows: [
+            { ratio: 1 },
+            { ratio: 1 },
+            { ratio: 1 },
+            { ratio: 1 }
+        ],
+        cols: [
+            { ratio: 1 },
+            { ratio: 1, baseSize: '100px'  },
+            { ratio: 1 }
+        ]
+    }">
+	
+	<div class="header" data-options="dxItem: { location: [{ row: 0, col: 0, colspan:3 }, {row: 0, col: 0, colspan:3}] }">
+		
+		<p>Bem vindo</p>
+		
+	</div>
+	<div class="left-side-bar" data-options="dxItem: {
+		location: [{ 
+			row: 1, 
+			col: 0
+		}, {row: 2, col: 0}]
+	}">
+
+	</div>
+	
+	<div class="content" data-options="dxItem: {
+		location: [{ 
+			row: 1, 
+			col: 1
+		}, {row: 1, col: 0}]
+	}">
+
+			<p><strong>Bem-vindo</strong>, por favor, entre com sua conta.</p>
+            <div class="dx-fieldset" style="width:400px; margin: 0 auto;">
+				<div class="dx-fieldset-header">Login:</div>
+                <div class="dx-field">
+                    <div class="dx-field-label">E-mail:</div>
+                    <div class="dx-field-value">
+                        <div dx-text-box="{ placeholder: 'Usuário' }"></div>
+                    </div>
+                </div>
+                <div class="dx-field">
+                    <div class="dx-field-label">Senha</div>
+                    <div class="dx-field-value">
+                        <div dx-text-box="{ mode: 'password', placeholder: 'Senha' }"></div>
+                    </div>
+                </div>
+				<div class="dx-field">
+					<div class="dx-field-value">
+						<div id="checked" dx-check-box="{text:'Manter Conectado'}"></div>
+					</div>
+				</div>
+				<div class="dx-field" style="text-align:right">
+					<div id="default" dx-button="{text: 'Entrar', type: 'default'}"></div>
+					<div id="default" dx-button="{text: 'Sair', type: 'normal'}"></div>
+				</div>
+
+
+				<div class="dx-field">
+					<div class="dx-field-value" style="text-align:right">
+						<p><a href="/">Esqueceu a senha?</a></p>
+					</div>
+				</div>
+            </div>
+
+
+	</div>
+
+	<div class="right-side-bar" data-options="dxItem: {
+		location: [{ 
+			row: 1, 
+			col: 2
+		}, {row: 3, col: 0}]
+	}">
+
+	</div>
+	
+	<div class="footer" data-options="dxItem: { location: [{ row: 2, col: 0, colspan:3 }, {row: 4, col: 0, colspan:3}] }">
+		<p>Down</p>
+	</div>
+	
+	
+</div>
+
