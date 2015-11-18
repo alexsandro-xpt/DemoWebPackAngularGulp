@@ -1,13 +1,22 @@
 'use strict';
 
 
-require("./DesktopLayout.js");
+//require("./DesktopLayout.js");
+require("./SlideOut/SlideOutLayout.js");
 
 
 
 var modulo = angular.module('admin', ['dx']);
 
 modulo.controller('ctrAdmin', ['$scope','$http', '$q', 'dx', function($scope, $http, $q, dx){
+        
+        var MyApp = window.MyApp = { };
+        MyApp.app = new dx.framework.html.HtmlApplication({
+                namespace: MyApp,
+                animationSet: dx.framework.html.animationSets['default'],
+                layoutSet: dx.framework.html.layoutSets['slideout']
+        });     
+
 
         /*
         $http.get('http://www.filltext.com/?delay=3&rows=40&author={firstName}&title={lastName}&cep={phone|format}&genre={streetAddress}&format={city}&language={usState|abbr}&year={zip}').

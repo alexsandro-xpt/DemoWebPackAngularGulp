@@ -4,6 +4,7 @@ var webpack = require("webpack");
 var WebpackNotifierPlugin = require('webpack-notifier');
 
 
+
 module.exports = {
     context: path.resolve(__dirname, "app"),
     devtool: 'eval',
@@ -30,8 +31,7 @@ module.exports = {
             {'angular-resource': 'angular-resource/angular-resource.min.js'},
             {'angular-sanitize': 'angular-sanitize/angular-sanitize.min.js'},
             {'angular-ui-router': 'angular-ui-router/release/angular-ui-router.min.js'},
-            {oclazyload: 'oclazyload/dist/oclazyload.min.js'},
-            //{DevExpress: 'devextreme/js/dx.all.js'}
+            {oclazyload: 'oclazyload/dist/oclazyload.min.js'}
         ]
     },
     module: {

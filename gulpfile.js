@@ -37,7 +37,7 @@ gulp.task('copyCss', function() {
     
      gulp.src('app/assets/vendors/css/', {read: false}).pipe(clean());
     
-    var filter = gulpFilter(['dx.common.css', 'dx.light.css']);
+    var filter = gulpFilter(['dx.common.css', 'dx.light.css']);//dx.win8.black //dx.light //dx.ios7.default
     
     return gulp.src('bower_components/**/*.css')
         .pipe(flatten()).pipe(filter)
@@ -138,7 +138,7 @@ gulp.task("webpack-dev-server", function(callback) {
 gulp.task('build', gulpsync.sync(['copyJs', 'copyCss', 'copyIcon', 'webpack']));
 
 
-gulp.task('dev', ['copyJs', 'copyCss', 'copyIcon', 'webpack-dev-server']);
+gulp.task('dev', gulpsync.sync(['copyJs', 'copyCss', 'copyIcon', 'webpack-dev-server']));
 
 gulp.task('run', ['webpack-dev-server']);
 

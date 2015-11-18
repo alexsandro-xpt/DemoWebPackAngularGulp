@@ -1,6 +1,6 @@
+
 var path = require("path");
 var webpack = require("webpack");
-
 var node_modules_dir = path.resolve(__dirname, 'node_modules');
 
 /*'html!html-minify'*/
@@ -46,6 +46,7 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
             { test: /\.html$/, loader:'html!html-minify' },
             { test: /\.(ttf|eot|woff(2)?)/, loader:'file' },
             { test: /\.css$/, loader:'style-loader!css-loader' }
+            
         ]
     },
     /*'html-minify-loader': {
@@ -69,7 +70,7 @@ var node_modules_dir = path.resolve(__dirname, 'node_modules');
         new webpack.ProvidePlugin({
             $: "jquery",
             jQuery: "jquery",
-            "window.jQuery": "jquery", DevExpress: "DevExpress", "window.DevExpress":"DevExpress"
+            "window.jQuery": "jquery", DevExpress: "DevExpress"/*, "window.DevExpress":"DevExpress"*/
         }),
         new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])

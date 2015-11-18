@@ -7,14 +7,14 @@
         </div>
         <div class="main-menu dx-desktop-layout-main-menu">
             <div class="wrapper">
-                <nav id="navBar" data-bind="dxNavBar: {}" data-options="dxCommandContainer : { id: 'global-navigation', contentCssPosition: 'static' }"></nav>
+                <nav id="navBar" dx-nav-bar="{}" data-options="dxCommandContainer : { id: 'global-navigation', contentCssPosition: 'static' }"></nav>
             </div>
         </div>
         <div class="toolbar dx-desktop-layout-toolbar">
             <div class="wrapper" data-options="dxContentPlaceholder : { name: 'header', contentCssPosition: 'static' } ">
-                <div data-bind="dxToolbar: { items: [{ text: title, location: 'before', template: 'titleTemplate' }] }" data-options="dxCommandContainer : { id: 'desktop-toolbar' }">
+                <div dx-toolbar="{ items: [{ text: title, location: 'before', template: 'titleTemplate' }] }" data-options="dxCommandContainer : { id: 'desktop-toolbar' }">
                     <div data-options="dxTemplate:{name:'titleTemplate'}">
-                        <h2 data-bind="text: text"></h2>
+                        <h2>{{text}}</h2>
                     </div>
                 </div>
             </div>
@@ -23,6 +23,15 @@
             <div class="content-wrapper">
                 <div class="content" data-options="dxContentPlaceholder : { name: 'content', contentCssPosition: 'static' } ">
                     <p>Voltar para a <a href="/">home</a>.</p>
+                    
+     <div dx-file-uploader="{
+        multiple: true,
+        accept: '*.*',
+        values: [],
+        uploadMode: 'useButtons'
+    }"></div>    
+                    
+                    
                     {{data}}
                     <div class="dx-fieldset">
                         <div class="dx-field">
